@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList-App</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/4.4.1/socket.io.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="title">TodoList</h1>
+        <div id="header">
+            <div id="input-container">
+                <input type="text" placeholder="Title" id="todo-input" data-role="massage">
+                <label for="name" class="form_label">Title</label>
+            </div>
+            <button id="todo-add-btn" data-role="save-btn">add</button>
+        </div>
+    </div>
+
+    <div>
+        <ul id="todos-list" data-role="messages-container">
+        </ul>
+    </div>
+
+    <script>
+        $(function () {
+            const socket = io.connect(":8080")
+            $('[data-role="save-btn"]').click(function () {
+                let dataInputs = $('[data-role="massage"]').val()
+                socket.emit("add-todo", dataInputs);
+            })
+
+            socket.on("add-todo", (dataInputs) => {
+                $('[data-role="massage"]').append(dataInputs)
+            });
+        })
+    </script>
+    <script src="js/todoH.js"></script>
+
+</body>
+
+</html>
