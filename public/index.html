@@ -33,17 +33,39 @@
     <script>
         $(function () {
             const socket = io.connect(":8080")
-            $('[data-role="save-btn"]').click(function () {
+            // $('[data-role="save-btn"]').click(function () {
+
+            //     let dataInputs = $('[data-role="massage"]').val()
+            //     debugger
+            //     socket.emit("add-todo", dataInputs);
+            // })
+
+            socket.on("todo-add", (dataInputs) => {
+                $('[data-role="messages-container"]').append(dataInputs)
+            });
+            let addBtn = document.getElementById('todo-add-btn');
+            let list = document.getElementById('todos-list');
+            let addInput = document.getElementById('todo-input');
+
+            addBtn.addEventListener('click', function () {
                 let dataInputs = $('[data-role="massage"]').val()
                 socket.emit("add-todo", dataInputs);
-            })
+                // var paragraph = document.createElement('p');
+                // paragraph.classList.add('todo-input')
+                // paragraph.innerText = addInput.value;
+                // list.appendChild(paragraph);
+                // addInput.value = '';
+                // paragraph.addEventListener('click', function () {
+                //     paragraph.style.textDecoration = 'line-through';
+                // })
+                // paragraph.addEventListener('dblclick', function () {
+                //     list.removeChild(paragraph);
+                // })
 
-            socket.on("add-todo", (dataInputs) => {
-                $('[data-role="massage"]').append(dataInputs)
-            });
+            })
         })
     </script>
-    <script src="js/todoH.js"></script>
+    <!-- <script src="js/todoH.js"></script> -->
 
 </body>
 

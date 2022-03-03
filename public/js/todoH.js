@@ -3,7 +3,8 @@ let list = document.getElementById('todos-list');
 let addInput = document.getElementById('todo-input');
 
 addBtn.addEventListener('click', function () {
-
+    let dataInputs = $('[data-role="massage"]').val()
+    socket.emit("add-todo", dataInputs);
     var paragraph = document.createElement('p');
 
     paragraph.classList.add('todo-input')

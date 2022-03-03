@@ -19,7 +19,7 @@ mongoose
             io.on("connection", (socket) => {
                 console.log("A user connected");
                 socket.on("add-todo", (toDo) => {
-                    io.emit("add-todo", toDo);
+                    io.emit("todo-add", toDo);
                 });
             });
         })
