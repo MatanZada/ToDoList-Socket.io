@@ -1,8 +1,9 @@
-const express = require("express"),
-    app = express()
-port = process.env.PORT || 3000;
+const express = require("express")
+const app = express(),
+    port = process.env.PORT || 3000
 const mongoose = require("mongoose")
 const toDoRoute = require("./router/toDoRoute")
+
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -10,6 +11,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use('/todo', toDoRoute)
+app.use(express.static(__dirname));
 
 mongoose
     .connect("mongodb://0.0.0.0:27017/toDoListApp").then(() => {
@@ -19,9 +21,10 @@ mongoose
             io.on("connection", (socket) => {
                 console.log("A user connected");
                 socket.on("add-todo", (toDo) => {
-                    io.emit("todo-add", toDo);
-                });
+                    io.emit("get-todo", toDo);
+                })
             });
+
         })
     }).catch(err => console.error(err))
 

@@ -3,7 +3,7 @@
 }
 
 html{
-    background-image: linear-gradient(to right, #6d3276, #4b56b9,#00bf98,#1e6456,#bd5151);
+    background-image: url('/public/img/pexels-yunus-tuğ-9724071.jpg');
     width: 100%;
     height: 100%;
 }
