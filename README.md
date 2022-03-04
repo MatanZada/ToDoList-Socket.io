@@ -10,5 +10,4 @@ If you want to delete, double-click
  ![Alt text](./public/img/packageJson.png "Git checkbox")
  # ScreenShots
  ![Alt text](./public/img/trminalSocket.png "Git checkbox")
- ![Alt text](./public/img/pexels-yunus-tuğ-9724071.jpg "Git checkbox")
  ![Alt text](./public/img/page.png "Git checkbox")
